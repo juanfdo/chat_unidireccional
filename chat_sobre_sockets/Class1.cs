@@ -8,6 +8,7 @@ using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace chat_sobre_sockets
 {
@@ -25,6 +26,7 @@ namespace chat_sobre_sockets
             Byte[] bytes = new Byte[256];
             String data = null;
             int i;
+            try { 
             if (socket_tcp != null && padre != null)
             {
                 while (true)
@@ -38,6 +40,10 @@ namespace chat_sobre_sockets
                         padre.agregar_mensaje(data);
                     }
                 }
+            }
+            } catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
             }
         }
     }
